@@ -24,7 +24,7 @@ function Login() {
     });
   }
 
-  if (redirect) return <Redirect to="/artists" />;
+  if (redirect) return <Redirect to="/books" />;
 
   return (
     <div className="container">

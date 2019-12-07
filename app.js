@@ -22,8 +22,7 @@ const app = express();
 // Adding cookie and session support to our application
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const MongoStore = require('connect-mongo')(session);
-
+const flash = require("connect-flash");
 app.use(cookieParser());
 app.use(
   session({
@@ -31,11 +30,44 @@ app.use(
     cookie: {
       maxAge: 10800000
     },
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
     resave: true,
     saveUninitialized: true
   })
 );
+app.use(flash());
+app.use((req, res, next) => {
+  debugger;
+  res.locals.flash = res.locals.flash || {};
+  res.locals.flash.success = req.flash("success") || null;
+  res.locals.flash.error = req.flash("error") || null;
+
+  next();
+});
+
+// Our authentication helper
+const jwt = require("jsonwebtoken");
+const isAuthenticated = req => {
+  const token =
+    (req.cookies && req.cookies.token) ||
+    (req.body && req.body.token) ||
+    (req.query && req.query.token) ||
+    (req.headers && req.headers["x-access-token"]);
+
+  if (req.session.userId) return true;
+
+  if (!token) return false;
+
+  jwt.verify(token, "bobthebuilder", (err, decoded) => {
+    if (err) return false;
+    return true;
+  });
+};
+
+app.use((req, res, next) => {
+  req.isAuthenticated = () => isAuthenticated(req);
+  next();
+});
+// End of our authentication helper
 
 // This maintains our home path
 const path = require("path");
@@ -53,14 +85,12 @@ app.use(
 const routes = require("./routes.js");
 app.use("/api", routes);
 
-// Handles any requests that don't match the ones above
 const root = path.join(__dirname, '/client/build');
 app.use(express.static(root));
 app.use((req, res, next) => {
   if (req.method === 'GET' && req.accepts('html') && !req.is('json') && !req.path.includes('.')) {
     res.sendFile('index.html', { root });
   } else next();
-});
-
+})
 // Starting our server on port 4000
 app.listen(process.env.PORT || 4000, () => console.log("Listening on 4000"));

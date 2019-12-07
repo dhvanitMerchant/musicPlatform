@@ -1,17 +1,13 @@
-import React, { useState } from "react";
-import MainNav from "./partials/main_nav";
+import React from "react";
 import Routes from "./routes";
-import { NotificationProvider } from "./notification_context";
-import Notifier from "./notifier";
+
+import MainNav from "./partials/main_nav";
 
 export default function App() {
-  const [notification, setNotification] = useState({ status: null, message: null });
-
   return (
-    <NotificationProvider value={{ notification: notification, setNotification: setNotification }}>
+    <div className="App">
       <MainNav />
-      <Notifier />
       <Routes />
-    </NotificationProvider>
+    </div>
   );
 }

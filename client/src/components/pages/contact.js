@@ -3,48 +3,29 @@ import React from "react";
 function Contact() {
   return (
 <div class = "container">
-<div class="jumbotron text-center">
-<h1>Conatct hustlers</h1>
-</div>
-<div class="row">
+
+<div class = "row">
 <div class="card">
-<img src="./images/dm.jpg" alt="Hello DM"/>
+<img src="./images/maulika.jpeg" alt="Mauli" width="1100" height="500" />
 
-<h4>Dhvanit Merchant</h4>
-<p>SN# 200382214</p>
-
-</div>
-
-<div class="card">
-<img src="./images/ms.jpeg" alt="Hello DM"/>
-
-<h4>Mehul Shah</h4>
-<p>SN# 200390083</p>
-
-</div>
-
-<div class="card">
-<img src="./images/dp.jpeg" alt="Hello DM"/>
-
-<h4>Dhruv Patel</h4>
-<p>SN# 200382210</p>
-
-</div>
-
-
-<div class="card">
-<img src="./images/js.jpeg" alt="Hello DM"/>
-
-<h4>Jemin Suvagiya</h4>
-<p>SN# 200372988</p>
-
-</div>
-
-</div>
-
-
-</div>
+    <div class="card-body">
+      <h4 class="card-title">Maulika Desai</h4>
+      <p class="card-text">Student#: 200383477</p>
   
+    </div>
+  </div>
+
+  <div class="card">
+  <img src="./images/rinkle.jpeg" alt="Rinkal" width="1100" height="500" />
+  
+    <div class="card-body">
+      <h4 class="card-title">Rinkal Vavadiya</h4>
+      <p class="card-text">Student#: 200382680</p>
+      
+    </div>
+  </div>
+  </div>
+  </div>
 
 
 );

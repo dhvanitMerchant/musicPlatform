@@ -58,5 +58,5 @@ AuthorSchema.methods.authenticate = function (plainPassword, callback) {
   });
 };
 
-// Exporting our artist model
+// Exporting our book model
 module.exports = mongoose.model('Author', AuthorSchema);

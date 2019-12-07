@@ -6,23 +6,28 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app",
     "debug": "DEBUG=express:* node app.js",
-    "inspect": "node --inspect app.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "inspect": "node --inspect app.js"
   },
-  "author": "",
+  "author": "maulika",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
     "connect-flash": "^0.1.1",
-    "connect-mongo": "^3.0.0",
     "cookie-parser": "^1.4.4",
-    "dotenv": "^8.0.0",
+    "dotenv": "^8.2.0",
     "express": "^4.16.4",
     "express-session": "^1.16.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.6.9",
+    "mongoose": "^5.5.11",
     "pug": "^2.0.3"
   },
-  "description": ""
+  "description": "A bookging platform",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mauli-D/project2_js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mauli-D/project2_js/issues"
+  },
+  "homepage": "https://github.com/Mauli-D/project2_js#readme"
 }
